@@ -7,8 +7,8 @@
             <span class="fs-4">Simple header</span>
         </a>
 
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a href="{{url('/')}}" class="nav-link active" aria-current="page">Home</a></li>
+        <ul class="nav nav-pills ">
+            <li class="nav-item"><a href="{{url('/')}}" class="nav-link" >Home</a></li>
             <li class="nav-item"><a href="{{url('service')}}" class="nav-link">Services</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
             <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>

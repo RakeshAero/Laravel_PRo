@@ -20,7 +20,9 @@ Route::get('/',function(){
 });
 
 Route::get('/service',function(){
-    return view('service');
+    $session = 0;
+    $authors = [];
+    return view('service',compact('session','authors'));
 });
 
 Route::get('/login',function(){
