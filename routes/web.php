@@ -49,3 +49,5 @@ Route::get('/month/{num}',function($num){
 })->middleware('month');
 
 // Route::view('template','__templates.default');
+
+Route::view('/test','test');
