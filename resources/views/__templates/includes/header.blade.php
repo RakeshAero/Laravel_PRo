@@ -11,7 +11,7 @@
             <li class="nav-item"><a href="{{url('/')}}" class="nav-link" >Home</a></li>
             <li class="nav-item"><a href="{{url('service')}}" class="nav-link">Services</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+            <li class="nav-item"><a href="{{url('register')}}" class="nav-link">Register</a></li>
             <li class="nav-item"><a href="{{url('login')}}" class="nav-link">Login</a></li>
         </ul>
     </header>
