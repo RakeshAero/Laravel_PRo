@@ -27,6 +27,9 @@ class AuthController extends Controller
     public function home(){
         return view('home');
     }
+    public function service(){
+        return view('auth.service');
+    }
     public function dashboard(){
         if(Auth::check()){
 
@@ -54,7 +57,7 @@ class AuthController extends Controller
         $credentials = $request->only('email','password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
-        return redirect('/')->withSuccess("You Successfully Registered");
+        return redirect('dashboard')->withSuccess("You Successfully Registered");
     }
 
 

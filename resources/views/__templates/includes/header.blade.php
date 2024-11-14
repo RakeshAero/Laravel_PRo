@@ -16,8 +16,14 @@
             <li class="nav-item"><a href="{{url('login')}}" class="nav-link {{ (request()->is('login')) ? 'active' : '' }}">Login</a></li>
             @else
             <li class="nav-item"><a href="{{url('dashboard')}}" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }} " >Home</a></li>
+            <li class="nav-item"><a href="{{url('service')}}" class="nav-link {{ (request()->is('service')) ? 'active' : '' }}">Services</a></li>
+            <li class="nav-item">
+                <span class="nav-link fw-semibold text-reset">{{ (Auth::user()->username) }}</span></li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ (Auth::user()->name) }}</a>
+                {{-- <a class="nav-link dropdown-toggle" role="button" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ (Auth::user()->username) }}</a> --}}
+                <a href="#" class="mt-1 d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                  </a>
                 <ul class="dropdown-menu">
                     <li class="dropdown-item"><a class="dropdown-item" href="{{route('login')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -32,3 +38,4 @@
 
     </header>
 </div>
+

@@ -54,10 +54,13 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/',function(){
 //     return view('welcome');
 // });
-
+// Route::get('service',function(){
+//     return view('auth.service');
+// });
 Route::get('/',[AuthController::class,'dashboard'])->name('dashboard');
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::get('service',[AuthController::class, 'service'])->name('service');
 Route::get('dashboard',[AuthController::class,'dashboard'])->name('dashboard');
 Route::post('store', [AuthController::class, 'store'])->name('store');
 Route::post('authenticate',[AuthController::class, 'authenticate'])->name('authenticate');
