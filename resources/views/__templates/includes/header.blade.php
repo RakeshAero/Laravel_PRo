@@ -8,12 +8,15 @@
         </a>
 
         <ul class="nav nav-pills ">
+            {{-- For Un-Authenticated Users --}}
             @guest
             <li class="nav-item"><a href="{{url('dashboard')}}" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }} " >Home</a></li>
             {{-- <li class="nav-item"><a href="{{url('service')}}" class="nav-link {{ (request()->is('service')) ? 'active' : '' }}">Services</a></li> --}}
             {{-- <li class="nav-item"><a href="#" class="nav-link ">Pricing</a></li> --}}
             <li class="nav-item"><a href="{{url('register')}}" class="nav-link {{ (request()->is('register')) ? 'active' : '' }}">Register</a></li>
             <li class="nav-item"><a href="{{url('login')}}" class="nav-link {{ (request()->is('login')) ? 'active' : '' }}">Login</a></li>
+
+            {{-- For Authenticated User --}}
             @else
             <li class="nav-item"><a href="{{url('dashboard')}}" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }} " >Home</a></li>
             <li class="nav-item"><a href="{{url('service')}}" class="nav-link {{ (request()->is('service')) ? 'active' : '' }}">Services</a></li>

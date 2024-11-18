@@ -18,7 +18,7 @@ class AuthController extends Controller
         ]);
     }
     public function login(){
-        session()->flash('success', 'You have successfully Logged in');
+        // session()->flash('success', 'You have successfully Logged in');
         return view('auth.login');
     }
     public function register(){
@@ -28,7 +28,17 @@ class AuthController extends Controller
         return view('home');
     }
     public function service(){
-        return view('auth.service');
+
+        if(!Auth::check()){
+            return redirect()->route('login')->withErrors(['email'=>'Please Login to Access the Dashboard'])->onlyInput('email');
+        }
+        else if(Auth::check()){
+            return view('auth.service');
+        }
+        else{
+            return view('auth.register');
+        }
+
     }
     public function dashboard(){
         if(Auth::check()){

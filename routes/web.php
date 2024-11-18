@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 // use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,14 +55,14 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/',function(){
 //     return view('welcome');
 // });
-// Route::get('service',function(){
-//     return view('auth.service');
-// });
+Route::get('service',function(){
+    return view('auth.service');
+})->middleware('auth');
+
 Route::get('/',[AuthController::class,'dashboard'])->name('dashboard');
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
-Route::get('service',[AuthController::class, 'service'])->name('service');
-Route::get('dashboard',[AuthController::class,'dashboard'])->name('dashboard');
+Route::get('dashboard',[AuthController::class,'dashboard'])->name('dashboard')->middleware('auth');
 Route::post('store', [AuthController::class, 'store'])->name('store');
 Route::post('authenticate',[AuthController::class, 'authenticate'])->name('authenticate');
 Route::post('logout',[AuthController::class, 'logout'])->name('logout')->middleware('auth');
