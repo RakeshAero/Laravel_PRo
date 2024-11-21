@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-// use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Middleware;
@@ -66,5 +66,13 @@ Route::get('dashboard',[AuthController::class,'dashboard'])->name('dashboard')->
 Route::post('store', [AuthController::class, 'store'])->name('store');
 Route::post('authenticate',[AuthController::class, 'authenticate'])->name('authenticate');
 Route::post('logout',[AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+
+Route::get('todo',[TaskController::class,'todo'])->name('todo')->middleware('auth');
+Route::post('addtask',[TaskController::class,'addtask'])->name('addtask')->middleware('auth');
+Route::get('addtask',[TaskController::class,'create'])->name('create')->middleware('auth');
+Route::delete('/task/{num}',[TaskController::class,'remove']);
+
+// TODO: To Create Delete task for two tables
 
 

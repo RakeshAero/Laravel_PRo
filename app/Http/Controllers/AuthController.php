@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    //
+
+    // Redirect the user after Successfully Logged in
+    protected $redirecTo = '/dashboard';
+
     public function __construct()
     {
         $this->middleware('guest')->except([
@@ -18,7 +21,7 @@ class AuthController extends Controller
         ]);
     }
     public function login(){
-        // session()->flash('success', 'You have successfully Logged in');
+        session()->flash('success', 'You have successfully Logged in');
         return view('auth.login');
     }
     public function register(){
@@ -40,6 +43,8 @@ class AuthController extends Controller
         }
 
     }
+
+    // Dashboard
     public function dashboard(){
         if(Auth::check()){
 
@@ -50,6 +55,9 @@ class AuthController extends Controller
             'email'=>'Please Login to Access the Dashboard'
         ])->onlyInput('email');
     }
+
+
+    // Register User
     public function store(Request $request){
 
         $request->validate([
@@ -71,6 +79,8 @@ class AuthController extends Controller
     }
 
 
+
+    // Login Check
     public function authenticate(Request $request){
         $credentials =  $request->validate([
                             'email'=>'required|email',
@@ -86,6 +96,7 @@ class AuthController extends Controller
     }
 
 
+    // Logout
     public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();
@@ -99,3 +110,7 @@ class AuthController extends Controller
 // $user->username = $request->input('name');
 // $user->email = $request->input('email');
 // $user->password = $request->input('password');
+
+
+// Todo: It is also necessary to update the app/Http/Middleware/RedirectIfAuthenticated.php file with the proper redirect path:
+// return redirect('/tasks');
