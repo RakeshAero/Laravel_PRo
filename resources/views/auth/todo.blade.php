@@ -48,46 +48,46 @@
 
 </div>
 
-{{-- Show Bending Taks --}}
-<article class="d-flex justify-content-center">
-    @if(count($todo) > 0)
-
-        <div>
-            <h4 class="text-center">Available Tasks</h4>
-            <table class="table table-striped task-table">
-                <thead class="table-light">
-                    <tr>
-                        <th>No</th>
-                        <th>Tasks</th>
-                        <th>Options</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($todo as $task)
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$task->name}}</td>
-                            <td>
-                                <form action="{{url('/task/'.$task->id)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="bi bi-trash-fill"></i>
-                                </button>
-                                <button  type="button" class="btn btn-secondary">
-                                    <i class="bi bi-pencil-fill">
-                                    </i>
-                                </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    @endif
-
-</article>
+    {{-- Show Bending Taks --}}
+        <article class="d-flex justify-content-center">
+            @if(count($todo) > 0)
+        
+                <div>
+                    <h4 class="text-center">Available Tasks</h4>
+                    <table class="table table-striped task-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>No</th>
+                                <th>Tasks</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($todo as $task)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$task->name}}</td>
+                                    <td>
+                                        <form action="{{url('/task/'.$task->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                        
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </button>
+                                        <button  type="button" class="btn btn-secondary">
+                                            <i class="bi bi-pencil-fill">
+                                            </i>
+                                        </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endif
+            
+        </article>
 
 @endsection

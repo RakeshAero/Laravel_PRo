@@ -88,6 +88,12 @@ class AuthController extends Controller
                         ]);
 
         if(Auth::attempt($credentials)){
+
+            if(Auth::user()->type === 'admin'){
+                $request->session()->regenerate();
+                return redirect()->route('admin')->withSuccess("Admin Panel");
+            }
+
             $request->session()->regenerate();
             return redirect()->route('dashboard')->withSuccess("You Successfully Logged In !");
         }

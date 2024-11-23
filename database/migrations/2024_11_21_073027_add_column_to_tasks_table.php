@@ -13,8 +13,8 @@ class AddColumnToTasksTable extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->index()->after('id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('type')->default('default');
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnToTasksTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('phone');
+            $table->dropColumn('type');
         });
     }
 }

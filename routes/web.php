@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\AdminController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Middleware;
 
 /*
@@ -55,10 +58,16 @@ use GuzzleHttp\Middleware;
 // Route::get('/',function(){
 //     return view('welcome');
 // });
+
+
+
 Route::get('service',function(){
     return view('auth.service');
 })->middleware('auth');
 
+
+
+// Dashboard
 Route::get('/',[AuthController::class,'dashboard'])->name('dashboard');
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
@@ -67,12 +76,12 @@ Route::post('store', [AuthController::class, 'store'])->name('store');
 Route::post('authenticate',[AuthController::class, 'authenticate'])->name('authenticate');
 Route::post('logout',[AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-
+// Task
 Route::get('todo',[TaskController::class,'todo'])->name('todo')->middleware('auth');
 Route::post('addtask',[TaskController::class,'addtask'])->name('addtask')->middleware('auth');
 Route::get('addtask',[TaskController::class,'create'])->name('create')->middleware('auth');
 Route::delete('/task/{num}',[TaskController::class,'remove']);
 
-// TODO: To Create Delete task for two tables
-
+// Admin
+Route::get('/admin',[AdminController::class,'admin'])->name('admin')->middleware('isAdmin');
 
