@@ -84,4 +84,5 @@ Route::delete('/task/{num}',[TaskController::class,'remove']);
 
 // Admin
 Route::get('/admin',[AdminController::class,'admin'])->name('admin')->middleware('isAdmin');
+Route::get('/usertable',[AdminController::class,'usertable'])->name('usertable')->middleware('isAdmin');
 
