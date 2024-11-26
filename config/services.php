@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'openweather' => [
+        'base_url' => 'https://api.openweathermap.org/data/2.5/',
+        'key' => env('OPENWEATHER_APP_KEY'),
+    ]
+
 ];

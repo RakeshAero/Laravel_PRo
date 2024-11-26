@@ -19,6 +19,7 @@
             {{-- For Authenticated User --}}
             @else
             <li class="nav-item"><a href="{{url('dashboard')}}" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }} " >Home</a></li>
+            <li class="nav-item"><a href="{{url('weather')}}" class="nav-link {{ request()->is('weather')  ? 'active' : ''}}">Weather</a></li>
             <li class="nav-item"><a href="{{url('/todo')}}" class="nav-link {{ (request()->is('todo')) ? 'active' : '' }} " >Todo</a></li>
             <li class="nav-item"><a href="{{url('service')}}" class="nav-link {{ (request()->is('service')) ? 'active' : '' }}">Services</a></li>
             <li class="nav-item">

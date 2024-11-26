@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\WeatherCotroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -85,4 +85,10 @@ Route::delete('/task/{num}',[TaskController::class,'remove']);
 // Admin
 Route::get('/admin',[AdminController::class,'admin'])->name('admin')->middleware('isAdmin');
 Route::get('/usertable',[AdminController::class,'usertable'])->name('usertable')->middleware('isAdmin');
+
+// Weather
+Route::post('/weather/fetch',[WeatherCotroller::class, 'findWeather'])->middleware('auth')->name('weather.fetch');
+Route::get('/weather', function (){
+    return view('weather.w_report');
+})->middleware('auth');
 
