@@ -18,7 +18,7 @@ class WeatherService{
         $response = Http::get($url,[
             'q' => $city,
             'appid' => $this->api_key,
-            'unit' => 'metric',
+            'units' => 'metric',
         ]);
 
         if($response->successful()){

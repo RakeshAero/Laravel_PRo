@@ -87,8 +87,8 @@ Route::get('/admin',[AdminController::class,'admin'])->name('admin')->middleware
 Route::get('/usertable',[AdminController::class,'usertable'])->name('usertable')->middleware('isAdmin');
 
 // Weather
-Route::post('/weather/fetch',[WeatherCotroller::class, 'findWeather'])->middleware('auth')->name('weather.fetch');
-Route::get('/weather', function (){
+Route::post('weather',[WeatherCotroller::class, 'findWeather'])->middleware('auth')->name('weather.fetch');
+Route::get('weather', function (){
     return view('weather.w_report');
 })->middleware('auth');
 
