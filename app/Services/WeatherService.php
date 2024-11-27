@@ -4,7 +4,15 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 
+
+/**
+ *This a specific service class used to fetch the data using API Request
+ */
+
+
+
 class WeatherService{
+
     protected $api_key;
 
     public function __construct()
@@ -16,9 +24,9 @@ class WeatherService{
 
         $url ='http://api.openweathermap.org/data/2.5/weather';
         $response = Http::get($url,[
-            'q' => $city,
+            'q' => $city, //?q=city
             'appid' => $this->api_key,
-            'units' => 'metric',
+            'units' => 'metric', //Celcius
         ]);
 
         if($response->successful()){

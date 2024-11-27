@@ -2,22 +2,6 @@
 @section('title','weather')
 @section('main-content')
 
-    {{-- <h1>Weather Report</h1>
-
-    <form action="{{route('weather.fetch')}}" method="POST">
-        @csrf
-    <label>Type City Name :</label>
-    <input type="text" name='city' id='city' required>
-    <button type="submit" class="btn btn-secondary">Get Report</button>
-    </form>
-    @if(isset($weather['error']))
-    <p style="color: red;">{{ $weather['error'] }}</p>
-    @endif
-
-    @if(isset($weather) && isset($weather['weather']))
-    <pre>{{$weather['weather'][0]['main']}}</pre>
-    <pre>{{$weather['weather'][0]['description']}}</pre>
-    @endif --}}
 
     <div class="d-flex justify-content-center align-items-center">
         <div class="col-md-8 col-lg-6 col-xl-4">
@@ -38,14 +22,17 @@
 
             {{-- Card --}}
             <div class="card shadow-0 border">
+
+                {{-- To check if the API contains index=> weather --}}
                 @if(isset($weather) && isset($weather['weather']))
                 <div class="card-body p-4">
-                    <h4 class="mb-1">{{$weather['name']}} , {{$weather['sys']['country']}}</h4>
+                    <h4 class="mb-1">{{$weather['name']}} , {{$weather['sys']['country']}}</h4> 
                     <p class="mb-2">Temperature: <strong>{{$weather['main']['temp']}}°C</strong></p>
                     <p>Feels Like :<strong>{{$weather['main']['feels_like']}}°C</strong></p>
                     <div class="d-flex flex-row align-items-center">
                         <p class="mb-0 me-4 fs-4">{{ucfirst($weather['weather'][0]['description'])}}</p>
-                        {{-- <i class="bi bi-clouds-fill fs-2"></i> --}}
+
+                        {{-- To Fetch Openweather Icons --}}
                         <img src="http://openweathermap.org/img/w/{{$weather['weather'][0]['icon']}}.png ">
                       </div>
                 </div>
