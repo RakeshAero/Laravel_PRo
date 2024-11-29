@@ -2,30 +2,18 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use App\Model\User;
 
-class isAdmin
+class IsAdmin
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
     public function handle($request, Closure $next)
     {
-
-        // To check if the user is Admin or Not
-        if(Auth::check() && Auth::user()->is_Admin()){
-
-            // Allow the request to proceed
+        if (Auth::check() && Auth::user()->is_Admin()) {
             return $next($request);
         }
 
-        // Else return 403
-        abort(403,'Unauthorized Access');
+        abort(403, 'Unauthorized Access');
     }
 }

@@ -7,7 +7,7 @@ use App\Http\Controllers\WeatherCotroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use GuzzleHttp\Middleware;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -83,8 +83,8 @@ Route::get('addtask',[TaskController::class,'create'])->name('create')->middlewa
 Route::delete('/task/{num}',[TaskController::class,'remove']);
 
 // Admin
-Route::get('/admin',[AdminController::class,'admin'])->name('admin')->middleware('isAdmin');
-Route::get('/usertable',[AdminController::class,'usertable'])->name('usertable')->middleware('isAdmin');
+Route::get('/admin',[AdminController::class,'admin'])->name('admin')->middleware('IsAdmin');
+Route::get('/usertable',[AdminController::class,'usertable'])->name('usertable')->middleware('IsAdmin');
 
 // Weather
 Route::post('weather',[WeatherCotroller::class, 'findWeather'])->middleware('auth')->name('weather.fetch');

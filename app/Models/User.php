@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Task;
 
 class User extends Authenticatable
 {
@@ -47,8 +48,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // One to Many Relationship
     public function tasks(){
         return $this->hasMany(Task::class);
+    }
+
+    public function messages(){
+        return $this->hasMany(Message::class);
     }
 
     public function is_Admin(){
