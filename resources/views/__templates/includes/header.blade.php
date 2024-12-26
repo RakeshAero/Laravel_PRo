@@ -7,7 +7,7 @@
             <span class="fs-4" href="{{url('dashboard')}}">Dashboard</span>
         </a>
 
-        <ul class="nav nav-pills ">
+        <ul class="nav nav-pills red">
             {{-- For Un-Authenticated Users --}}
             @guest
             <li class="nav-item"><a href="{{url('dashboard')}}" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }} " >Home</a></li>
@@ -20,7 +20,8 @@
             @else
             <li class="nav-item"><a href="{{url('dashboard')}}" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }} " >Home</a></li>
             <li class="nav-item"><a href="{{url('weather')}}" class="nav-link {{ request()->is('weather')  ? 'active' : ''}}">Weather</a></li>
-            <li class="nav-item"><a href="{{url('/todo')}}" class="nav-link {{ (request()->is('todo')) ? 'active' : '' }} " >Todo</a></li>
+            <li class="nav-item"><a href="{{url('todo')}}" class="nav-link {{ (request()->is('todo')) ? 'active' : '' }} " >Todo</a></li>
+            <li class="nav-item"><a href="{{url('writeups')}}" class="nav-link {{ (request()->is('writeups')) ? 'active' : '' }}">writeups</a></li>
             <li class="nav-item"><a href="{{url('service')}}" class="nav-link {{ (request()->is('service')) ? 'active' : '' }}">Services</a></li>
             <li class="nav-item">
                 <span class="nav-link fw-semibold text-reset">{{ (Auth::user()->username) }}</span></li>
@@ -43,4 +44,5 @@
 
     </header>
 </div>
+
 

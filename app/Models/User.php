@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Task;
+use App\Models\Writeup;
 
 class User extends Authenticatable
 {
@@ -55,6 +56,10 @@ class User extends Authenticatable
 
     public function messages(){
         return $this->hasMany(Message::class);
+    }
+
+    public function writeups(){
+        return $this->hasMany(Writeup::class);
     }
 
     public function is_Admin(){
