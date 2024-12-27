@@ -1,10 +1,11 @@
-<div class="d-flex justify-content-center">
+@extends('blog.writeup')
+@section('sub-content')
     <div class="col-md-8 col-lg-6 col-xl-4">
         <div class="mb-4 pb-2 fw-normal">
             <h3>Create new post</h3>
         </div>
         @include('common.errors')
-<form method="POST" action="{{url('storepost')}}">
+    <form method="POST" action="{{url('storepost')}}">
     @csrf
     <label for="title" class="form-label fw-bold">Title : </label>
     <input class="form-control" name="title">
@@ -18,6 +19,6 @@
         <option>networking</option>
     </select>
     <button class="btn btn-primary mt-3">post</button>
-</form>
+    </form>
     </div>
-</div>
+@endsection

@@ -101,5 +101,6 @@ Route::get('weather', function (){
 
 // Writeups
 Route::get('writeups',[BlogController::class,'writeups'])->name('writeups')->middleware('auth');
-Route::get('create',[BlogController::class,'create'])->name('create')->middleware('auth');
+Route::get('writeups/create',[BlogController::class,'create'])->name('create')->middleware('auth');
 Route::post('storepost',[BlogController::class,'storepost'])->name('storepost')->middleware('auth');
+Route::get('writeups/viewwriteup',[BlogController::class,'viewwriteup'])->name('viewwriteup')->middleware('auth');
